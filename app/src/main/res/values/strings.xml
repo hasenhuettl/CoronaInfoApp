@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CoronaInfoApp</string>
+    <string name="mainGesundentelefon">Gesundheitsnummer</string>
+    <string name="mainZahlen">aktuelle Zahlen</string>
+    <string name="mainBeschraenkungen">aktuelle Beschränkungen</string>
+    <string name="mainAmpelfarben">Erklärung der Ampelfarben</string>
 </resources>
