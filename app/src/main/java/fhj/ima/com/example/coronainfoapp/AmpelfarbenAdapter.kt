@@ -1,0 +1,42 @@
+package fhj.ima.com.example.coronainfoapp
+
+import android.graphics.Color
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import at.fh.swengb.coronainfoapp.R
+import kotlinx.android.synthetic.main.item_ampelstufen.view.*
+
+class AmpelfarbenAdapter: RecyclerView.Adapter<AmpelViewHolder>() {
+    private var ampelfarbenList = listOf<ampelfarben>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AmpelViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val ampelItemView = inflater.inflate(R.layout.item_ampelstufen, parent, false)
+        return AmpelViewHolder(ampelItemView)
+    }
+
+    override fun getItemCount(): Int {
+        return ampelfarbenList.size
+    }
+
+    override fun onBindViewHolder(holder: AmpelViewHolder, position: Int) {
+        holder.bindItem(ampelfarbenList[position])
+    }
+
+    fun updateList(newList: List<ampelfarben>) {
+        ampelfarbenList = newList
+        notifyDataSetChanged()
+    }
+}
+
+    class AmpelViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    fun bindItem(ampelfarbe: ampelfarben) {
+        itemView.ampelstufe.text = ampelfarbe.stufe
+        itemView.beschränkungen.text = ampelfarbe.beschränkungen.joinToString( separator = "\n")
+        itemView.MaterialCardView.setBackgroundColor(Color.parseColor(ampelfarbe.color))
+
+    }
+}
