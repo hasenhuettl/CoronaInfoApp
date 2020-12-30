@@ -12,10 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoronaInfoApp">
 
-        <activity android:name="fhj.ima.com.example.coronainfoapp.Beschraenkungen"></activity>
+        <activity
+            android:name="fhj.ima.com.example.coronainfoapp.Beschraenkungen"
+            android:parentActivityName=".MainActivity">
+        </activity>
 
-        <activity android:name="fhj.ima.com.example.coronainfoapp.AktuelleZahlen"></activity>
-        <activity android:name=".Ampelfarben" />
+        <activity
+            android:name="fhj.ima.com.example.coronainfoapp.AktuelleZahlen"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity
+            android:name=".Ampelfarben"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
