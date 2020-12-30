@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CoronaInfoApp</string>
+    <string name="mainGesundentelefon">Gesundheitsnummer</string>
+    <string name="mainZahlen">aktuelle Zahlen</string>
+    <string name="mainBeschraenkungen">aktuelle Beschränkungen</string>
+    <string name="mainAmpelfarben">Erklärung der Ampelfarben</string>
+    <string name="beschraenkungen">Beschränkungen:</string>
+    <string name="beschraenkungenText">30.12: \n✱ Kultur: Museen, Bibliotheken, Büchereien und Archive werden geschlossen. \n✱ Freizeit: Tierparks, Zoos und botanische Gärten bleiben geschlossen. ></string>
 </resources>

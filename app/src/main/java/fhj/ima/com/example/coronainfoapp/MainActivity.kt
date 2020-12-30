@@ -5,7 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fhj.ima.com.example.coronainfoapp.Beschraenkungen
-import fhj.ima.com.example.coronainfoapp.aktuelleZahlen
+import fhj.ima.com.example.coronainfoapp.AktuelleZahlen
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         aktuelleZahlen_button.setOnClickListener {
-            val intent = Intent(this, aktuelleZahlen::class.java)
+            val intent = Intent(this, AktuelleZahlen::class.java)
             startActivity(intent)
         }
 
