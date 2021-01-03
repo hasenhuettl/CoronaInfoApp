@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import fhj.ima.com.example.coronainfoapp.AmpelRepository
 import kotlinx.android.synthetic.main.activity_ampelfarben.*
-import fhj.ima.com.example.coronainfoapp.AmpelfarbenAdapter
 
 class Ampelfarben : AppCompatActivity() {
 
@@ -16,7 +15,7 @@ class Ampelfarben : AppCompatActivity() {
         setContentView(R.layout.activity_ampelfarben)
 
         AmpelfarbenAdapter.updateList(AmpelRepository.ampelstufenList())
-        lesson_recycler_view.layoutManager = LinearLayoutManager(this)
-        lesson_recycler_view.adapter = AmpelfarbenAdapter
+        ampelfarben_recycler_view.layoutManager = LinearLayoutManager(this)
+        ampelfarben_recycler_view.adapter = AmpelfarbenAdapter
     }
 }

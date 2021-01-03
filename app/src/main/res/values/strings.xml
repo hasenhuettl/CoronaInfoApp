@@ -5,5 +5,6 @@
     <string name="mainBeschraenkungen">aktuelle Beschränkungen</string>
     <string name="mainAmpelfarben">Erklärung der Ampelfarben</string>
     <string name="beschraenkungen">Beschränkungen:</string>
+    <string name="noConnection">Konnte keine Verbindung mit dem Server herstellen. Bitte überprüfen Sie ihre Internetverbindung</string>
     <string name="beschraenkungenText">30.12: \n✱ Kultur: Museen, Bibliotheken, Büchereien und Archive werden geschlossen. \n✱ Freizeit: Tierparks, Zoos und botanische Gärten bleiben geschlossen. ></string>
 </resources>
