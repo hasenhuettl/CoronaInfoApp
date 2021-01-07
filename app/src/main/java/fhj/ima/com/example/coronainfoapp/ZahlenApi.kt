@@ -15,12 +15,12 @@ object ZahlenApi {
         val moshi = Moshi.Builder().build()
         retrofit = Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .baseUrl("https://raw.githubusercontent.com/Daniel-Breuss/covid-data-austria/master/austriadata.json")
+            .baseUrl("https://raw.githubusercontent.com/")
             .build()
         retrofitService = retrofit.create(ZahlenApiService::class.java)
     }
 }
 interface ZahlenApiService {
-    @GET("/")
+    @GET("/Daniel-Breuss/covid-data-austria/master/austriadata.json")
     fun epikurveList(): Call<List<epikurve>>
 }

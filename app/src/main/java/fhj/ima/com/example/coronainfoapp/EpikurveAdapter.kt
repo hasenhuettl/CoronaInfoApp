@@ -37,6 +37,6 @@ class EpikurveAdapter: RecyclerView.Adapter<EpikurveViewHolder>() {
 class EpikurveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     fun bindItem(epikurve: epikurve) {
         itemView.Datum.text = epikurve.Datum
-        itemView.Faelle.text = epikurve.Fälle_Zuwachs.toString()
+        itemView.Faelle.text = epikurve.Fälle_gesamt.toString()
     }
 }

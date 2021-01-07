@@ -25,6 +25,7 @@ import java.io.IOException
 
 
 class AktuelleZahlen : AppCompatActivity() {
+    val epikurvenAdapter = EpikurveAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +75,18 @@ class AktuelleZahlen : AppCompatActivity() {
         //val markerView = CustomMarker(this@ShowForexActivity, R.layout.marker_view)
         //lineChart.marker = markerView
 
+        EpikurveRepository.epikurveList(
+                success = {
+                    epikurvenAdapter.updateListEpikurve(it)
+                },
+                error = {
+                    Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                }
+        )
+        parseJson()
+
         epikurve_recycler_view.layoutManager = LinearLayoutManager(this)
-        epikurve_recycler_view.adapter = EpikurveAdapter()
+        epikurve_recycler_view.adapter = epikurvenAdapter
     }
 
 
@@ -84,76 +95,8 @@ private fun parseJson(){
     val moshi = Moshi.Builder().build()
     val jsonAdapter = moshi.adapter<epikurve>(epikurve::class.java)
     val result = jsonAdapter.fromJson("""
-            {
-                "Datum": "2021-01-05",
-                "Fälle_gesamt": "371657",
-                "Fälle_Zuwachs": "2877",
-                "Tote_v1": "6457",
-                "Tote_v1_Zuwachs": "100",
-                "Tote_v2": "6454",
-                "Tote_v2_Zuwachs": "51",
-                "Genesene": "334711",
-                "Genesene_Zuwachs": "1218",
-                "Hospitalisiert": "2033",
-                "Intensivstation": "371",
-                "IBett_frei": "630",
-                "IBett_Kapazität": "1001",
-                "Testungen": "3808540",
-                "Testungen_Zuwachs": "15450",
-                "Burgenland": "9741",
-                "Burgenland_Tote": "173",
-                "Burgenland_Genesene": "8846",
-                "Burgenland_Spital": "39",
-                "Burgenland_Intensiv": "5",
-                "Burgenland_Tests": "116831",
-                "Kärnten": "22656",
-                "Kärnten_Tote": "509",
-                "Kärnten_Genesene": "19438",
-                "Kärnten_Spital": "123",
-                "Kärnten_Intensiv": "13",
-                "Kärnten_Tests": "175979",
-                "Niederösterreich": "55890",
-                "Niederösterreich_Tote": "915",
-                "Niederösterreich_Genesene": "50143",
-                "Niederösterreich_Spital": "397",
-                "Niederösterreich_Intensiv": "49",
-                "Niederösterreich_Tests": "724823",
-                "Oberösterreich": "74271",
-                "Oberösterreich_Tote": "1181",
-                "Oberösterreich_Genesene": "67939",
-                "Oberösterreich_Spital": "438",
-                "Oberösterreich_Intensiv": "68",
-                "Oberösterreich_Tests": "476011",
-                "Salzburg": "30016",
-                "Salzburg_Tote": "357",
-                "Salzburg_Genesene": "26596",
-                "Salzburg_Spital": "125",
-                "Salzburg_Intensiv": "21",
-                "Salzburg_Tests": "221884",
-                "Steiermark": "43834",
-                "Steiermark_Tote": "1406",
-                "Steiermark_Genesene": "39143",
-                "Steiermark_Spital": "333",
-                "Steiermark_Intensiv": "62",
-                "Steiermark_Tests": "401663",
-                "Tirol": "41329",
-                "Tirol_Tote": "528",
-                "Tirol_Genesene": "38910",
-                "Tirol_Spital": "122",
-                "Tirol_Intensiv": "33",
-                "Tirol_Tests": "464568",
-                "Vorarlberg": "19839",
-                "Vorarlberg_Tote": "226",
-                "Vorarlberg_Genesene": "18581",
-                "Vorarlberg_Spital": "58",
-                "Vorarlberg_Intensiv": "11",
-                "Vorarlberg_Tests": "243080",
-                "Wien": "74081",
-                "Wien_Tote": "1159",
-                "Wien_Genesene": "65115",
-                "Wien_Spital": "398",
-                "Wien_Intensiv": "109",
-                "Wien_Tests": "983701"
+            {"Datum": "2021-01-03",
+        "Fälle_gesamt": 366525        
             }
         """.trimIndent())
     }
