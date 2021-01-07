@@ -42,12 +42,11 @@ class EpikurveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     fun bindItem(epikurve: epikurve) {
         itemView.Datum.text = epikurve.Datum
         itemView.zahlen_gesamt_Fälle.text = epikurve.Fälle_gesamt.toString()
-        if (epikurve.Fälle_Zuwachs != "N") { // ToDo: falls zulässige Zahl
-            itemView.zahlen_neue_Fälle.text = epikurve.Fälle_Zuwachs // ToDo als Header
+        if (epikurve.Fälle_Zuwachs != "N" && epikurve.Fälle_Zuwachs != "") {
+            itemView.zahlen_neue_Fälle.text = epikurve.Fälle_Zuwachs
         }
         else {
             itemView.zahlen_neue_Fälle.text = "keine Angabe"
-            itemView.zahlen_text2.text = ""
         }
     }
 }

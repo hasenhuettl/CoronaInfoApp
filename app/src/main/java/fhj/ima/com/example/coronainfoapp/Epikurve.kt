@@ -53,13 +53,13 @@ class AktuelleZahlen : AppCompatActivity() {
         epikurve_recycler_view.adapter = epikurvenAdapter
 
         epikurve_button.setOnClickListener{
-            diagram()
+            diagram() // ToDO einstellen der angezeigten Tage
         }
 
     }
 
 
-fun diagram(){
+fun diagram(){ // ToDO skalierung und graphenbeschriftungen
     //Part1
     val entries = ArrayList<Entry>()
     Thread.sleep(2000)

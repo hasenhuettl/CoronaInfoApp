@@ -5,8 +5,8 @@
     android:id="@+id/MaterialCardView"
     android:layout_width="match_parent"
     android:layout_height="25dp"
-    android:layout_margin="8dp"
-    app:cardElevation="8dp">
+    android:layout_margin="2dp"
+    app:cardElevation="4dp">
 
 
     <!-- your view content here -->
@@ -25,12 +25,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/zahlen_doppelpunkt"
+            android:id="@+id/zahlen_neue_Fälle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=":"
+            android:layout_marginStart="8dp"
+            android:text="2000"
             app:layout_constraintBottom_toBottomOf="@+id/Datum"
-            app:layout_constraintStart_toEndOf="@+id/Datum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/Datum" />
 
         <TextView
@@ -40,37 +42,7 @@
             android:layout_marginEnd="8dp"
             android:text="200000"
             app:layout_constraintBottom_toBottomOf="@+id/Datum"
-            app:layout_constraintEnd_toStartOf="@+id/zahlen_text1"
-            app:layout_constraintTop_toTopOf="@+id/Datum" />
-
-        <TextView
-            android:id="@+id/zahlen_text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Fälle"
-            app:layout_constraintBottom_toBottomOf="@+id/Datum"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/Datum" />
-
-        <TextView
-            android:id="@+id/zahlen_neue_Fälle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="2000"
-            app:layout_constraintBottom_toBottomOf="@+id/Datum"
-            app:layout_constraintStart_toEndOf="@+id/Datum"
-            app:layout_constraintTop_toTopOf="@+id/Datum" />
-
-        <TextView
-            android:id="@+id/zahlen_text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="neue Fälle"
-            app:layout_constraintBottom_toBottomOf="@+id/Datum"
-            app:layout_constraintStart_toEndOf="@+id/zahlen_neue_Fälle"
             app:layout_constraintTop_toTopOf="@+id/Datum" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

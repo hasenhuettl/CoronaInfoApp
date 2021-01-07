@@ -23,17 +23,49 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/epikurve_recycler_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineChart" />
+        app:layout_constraintTop_toBottomOf="@+id/epikurve_Header_1" />
 
     <Button
         android:id="@+id/epikurve_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="32dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/epikurve_Header_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Datum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineChart" />
+
+    <TextView
+        android:id="@+id/epikurve_Header_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="neue Fälle"
+        app:layout_constraintBottom_toBottomOf="@+id/epikurve_Header_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/epikurve_Header_1" />
+
+    <TextView
+        android:id="@+id/epikurve_Header_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Fälle gesamt"
+        app:layout_constraintBottom_toBottomOf="@+id/epikurve_Header_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/epikurve_Header_2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
