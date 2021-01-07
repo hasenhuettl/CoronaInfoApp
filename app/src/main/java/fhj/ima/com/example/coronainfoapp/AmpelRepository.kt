@@ -33,7 +33,7 @@ object AmpelRepository {
                         "Moderat gesteigertes Auftreten von Clustern; diese sind Großteils mittels behördlichen Maßnahmen unter Kontrolle",
                         "Anteil von Clustern mit einem Reise-Zusammenhang überwiegt den Anteil lokaler Cluster",
                         "Moderate Auslastung von Intensivbetten",
-                        "Moderat sinkende Testaktivität", "" +
+                        "Moderat sinkende Testaktivität",
                         "Moderat steigende Anzahl positiver Tests"),
                         "#FAF2A9"
                 ),
