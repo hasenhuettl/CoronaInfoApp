@@ -1,11 +1,14 @@
 package fhj.ima.com.example.coronainfoapp
 
+import android.app.Activity
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,11 +25,10 @@ import java.io.IOException
 
 
 class AktuelleZahlen : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_epikurve)
-
-
 
         //Part1
         val entries = ArrayList<Entry>();
@@ -71,13 +73,17 @@ class AktuelleZahlen : AppCompatActivity() {
         //Part11
         //val markerView = CustomMarker(this@ShowForexActivity, R.layout.marker_view)
         //lineChart.marker = markerView
+
+        epikurve_recycler_view.layoutManager = LinearLayoutManager(this)
+        epikurve_recycler_view.adapter = EpikurveAdapter()
     }
 
 
 
-}
 private fun parseJson(){
-    val json = """
+    val moshi = Moshi.Builder().build()
+    val jsonAdapter = moshi.adapter<epikurve>(epikurve::class.java)
+    val result = jsonAdapter.fromJson("""
             {
                 "Datum": "2021-01-05",
                 "Fälle_gesamt": "371657",
@@ -149,8 +155,6 @@ private fun parseJson(){
                 "Wien_Intensiv": "109",
                 "Wien_Tests": "983701"
             }
-        """
-    val moshi = Moshi.Builder().build()
-    val jsonAdapter = moshi.adapter<epikurve>(epikurve::class.java)
-    val result = jsonAdapter.fromJson(json)
+        """.trimIndent())
+    }
 }

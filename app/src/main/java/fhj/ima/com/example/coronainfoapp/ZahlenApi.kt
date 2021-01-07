@@ -1,5 +1,7 @@
 package fhj.ima.com.example.coronainfoapp
 
+import android.database.Observable
+import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import com.squareup.moshi.Moshi
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -18,15 +20,7 @@ object ZahlenApi {
         retrofitService = retrofit.create(ZahlenApiService::class.java)
     }
 }
-/*interface ZahlenApiService {
-    @GET("/lessons")
-    @Headers("X-API-KEY: ${ZahlenApi}")
-    fun lessons(): Call<List<epikurve>>
-
-    @POST("/lessons/{id}/rate")
-    @Headers("X-API-KEY: ${ZahlenApi}")
-    fun rateLesson(@Path("id") lessonId: String, @Body rating: LessonRating): Call<Unit>
-
-    @GET("/${ZahlenApi.}/lessons/{id}")
-    fun lessonByID(@Path("id") lessonId: String): Call<Lesson>
-}*/
+interface ZahlenApiService {
+    @GET("/")
+    fun epikurveList(): Call<List<epikurve>>
+}

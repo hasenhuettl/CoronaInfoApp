@@ -28,7 +28,7 @@ class EpikurveAdapter: RecyclerView.Adapter<EpikurveViewHolder>() {
         holder.bindItem(epikurveList[position])
     }
 
-    fun updateList(newList: List<epikurve>) {
+    fun updateListEpikurve(newList: List<epikurve>) {
         epikurveList = newList
         notifyDataSetChanged()
     }
@@ -36,7 +36,7 @@ class EpikurveAdapter: RecyclerView.Adapter<EpikurveViewHolder>() {
 
 class EpikurveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     fun bindItem(epikurve: epikurve) {
-        itemView.Datum.text = fhj.ima.com.example.coronainfoapp.epikurve.Datum
-        itemView.Faelle.text = fhj.ima.com.example.coronainfoapp.epikurve.Faelle_zuwachs
+        itemView.Datum.text = epikurve.Datum
+        itemView.Faelle.text = epikurve.Fälle_Zuwachs.toString()
     }
 }

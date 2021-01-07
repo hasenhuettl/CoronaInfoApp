@@ -1,5 +1,10 @@
 package fhj.ima.com.example.coronainfoapp
 
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Response.success
+
 object EpikurveRepository {
     private val epikurven: List<epikurve>
 
@@ -77,7 +82,21 @@ object EpikurveRepository {
          983701)
         )
     }
-    fun epikurveList(): List<epikurve> {
-        return epikurven
+    fun epikurveList() {
+        ZahlenApi.retrofitService.epikurveList().enqueue(object: Callback<List<epikurve>> {
+            override fun onFailure(call: Call<List<epikurve>>, t: Throwable) {
+                error("The call failed")
+            }
+
+            override fun onResponse(call: Call<List<epikurve>>, response: Response<List<epikurve>>) {
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    success(responseBody)
+                } else {
+                    error("Something went wrong")
+                }
+            }
+
+        })
     }
 }
