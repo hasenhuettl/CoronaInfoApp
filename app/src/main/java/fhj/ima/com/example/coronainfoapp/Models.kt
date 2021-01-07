@@ -11,9 +11,9 @@ class ampelfarben (
 @JsonClass(generateAdapter = true)
 class epikurve(
     val Datum: String,
-    val Fälle_gesamt: Int
-    /*val Fälle_Zuwachs: String,
-    val Tote_v1: String,
+    val Fälle_gesamt: Int,
+    val Fälle_Zuwachs: String
+    /*val Tote_v1: String,
     val Tote_v1_Zuwachs: String,
     val Tote_v2: String,
     val Tote_v2_Zuwachs: String,

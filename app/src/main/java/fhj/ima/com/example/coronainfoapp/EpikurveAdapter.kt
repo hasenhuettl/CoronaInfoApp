@@ -1,16 +1,11 @@
 package fhj.ima.com.example.coronainfoapp
 
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import at.fh.swengb.coronainfoapp.R
-import kotlinx.android.synthetic.main.item_ampelstufen.view.*
-import kotlinx.android.synthetic.main.item_ampelstufen.view.MaterialCardView
 import kotlinx.android.synthetic.main.item_zahlen.view.*
-
 class EpikurveAdapter: RecyclerView.Adapter<EpikurveViewHolder>() {
     private var epikurveList = listOf<epikurve>()
 
@@ -32,11 +27,27 @@ class EpikurveAdapter: RecyclerView.Adapter<EpikurveViewHolder>() {
         epikurveList = newList
         notifyDataSetChanged()
     }
+
+    fun getNewValue(position: Int): Int{
+        return if (epikurveList[position].Fälle_Zuwachs != "N")
+            return epikurveList[position].Fälle_Zuwachs.toInt()
+        else if (position == (epikurveList.size - 1))
+            return epikurveList[position].Fälle_gesamt
+        else
+            return (epikurveList[position-1].Fälle_gesamt - epikurveList[position].Fälle_gesamt)
+    }
 }
 
 class EpikurveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     fun bindItem(epikurve: epikurve) {
         itemView.Datum.text = epikurve.Datum
-        itemView.Faelle.text = epikurve.Fälle_gesamt.toString()
+        itemView.zahlen_gesamt_Fälle.text = epikurve.Fälle_gesamt.toString()
+        if (epikurve.Fälle_Zuwachs != "N") { // ToDo: falls zulässige Zahl
+            itemView.zahlen_neue_Fälle.text = epikurve.Fälle_Zuwachs // ToDo als Header
+        }
+        else {
+            itemView.zahlen_neue_Fälle.text = "keine Angabe"
+            itemView.zahlen_text2.text = ""
+        }
     }
 }
