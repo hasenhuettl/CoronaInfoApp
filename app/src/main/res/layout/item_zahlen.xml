@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/MaterialCardView"
     android:layout_width="match_parent"
-    android:layout_height="25dp"
-    android:layout_margin="2dp"
-    app:cardElevation="4dp">
+    android:layout_height="@dimen/zahlen_layout_height"
+    android:layout_margin="@dimen/zahlen_layout_margin"
+    app:cardElevation="@dimen/zahlen_card_elevation">
 
 
     <!-- your view content here -->
@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:gravity="end"
             android:text="31.12.2020"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

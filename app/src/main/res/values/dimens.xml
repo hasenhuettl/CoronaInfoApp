@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="size">30dp</dimen>
+    <dimen name="zahlen_layout_height">25dp</dimen>
+    <dimen name="zahlen_layout_margin">2dp</dimen>
+    <dimen name="zahlen_card_elevation">4dp</dimen>
 </resources>

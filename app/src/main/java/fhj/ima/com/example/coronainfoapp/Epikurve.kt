@@ -7,6 +7,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -56,14 +59,28 @@ class AktuelleZahlen : AppCompatActivity() {
             diagram() // ToDO einstellen der angezeigten Tage
         }
 
+        // Create an ArrayAdapter
+        val adapter = ArrayAdapter.createFromResource(this,
+            R.array.city_list, android.R.layout.simple_spinner_item)
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Apply the adapter to the spinner
+        spinner.adapter = adapter
+
     }
+
+
+
+
 
 
 fun diagram(){ // ToDO skalierung und graphenbeschriftungen
     //Part1
     val entries = ArrayList<Entry>()
-    Thread.sleep(2000)
-    var iteration = 30 //epikurvenAdapter.getItemCount()
+    var iteration = 0
+    if (spinner.selectedItem.toString() !="alle" && spinner.selectedItem.toString().toInt() < epikurvenAdapter.itemCount) {
+        iteration = spinner.selectedItem.toString().toInt() // epikurvenAdapter.getItemCount()
+    } else { iteration = epikurvenAdapter.itemCount }
     //Part2
     var x = 0
     var y = 0

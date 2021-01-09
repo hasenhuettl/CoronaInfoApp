@@ -30,14 +30,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/epikurve_Header_1" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:entries="@array/city_list"
+        android:gravity="left"
+        app:layout_constraintBottom_toBottomOf="@+id/epikurve_tage"
+        app:layout_constraintEnd_toStartOf="@+id/epikurve_button"
+        app:layout_constraintStart_toEndOf="@+id/epikurve_tage"
+        app:layout_constraintTop_toTopOf="@+id/epikurve_tage" />
+
     <Button
         android:id="@+id/epikurve_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="Button"
+        app:layout_constraintBottom_toBottomOf="@+id/epikurve_tage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/epikurve_tage" />
 
     <TextView
         android:id="@+id/epikurve_Header_1"
@@ -68,4 +84,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/epikurve_Header_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/epikurve_Header_2" />
+
+    <TextView
+        android:id="@+id/epikurve_tage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Angezeigte Tage:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
