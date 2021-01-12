@@ -92,14 +92,14 @@ fun diagram(){ // ToDO skalierung und graphenbeschriftungen
     }
 
     //Part3
-    val vl = LineDataSet(entries, "My Type")
+    val vl = LineDataSet(entries, "Anzahl der Fälle")
 
     //Part4
     vl.setDrawValues(false)
     vl.setDrawFilled(true)
     vl.lineWidth = 3f
-    vl.fillColor = R.color.blue
-    vl.fillAlpha = R.color.red
+//    vl.fillColor = R.color.light_teal
+    vl.fillAlpha = R.color.light_teal
 
     //Part5
     lineChart.xAxis.labelRotationAngle = 0f
@@ -111,12 +111,13 @@ fun diagram(){ // ToDO skalierung und graphenbeschriftungen
     //lineChart.axisRight.isEnabled = false
     //lineChart.xAxis.axisMaximum = j+0.1f
 
+
     //Part8
     lineChart.setTouchEnabled(true)
-    lineChart.setPinchZoom(true)
+    lineChart.setPinchZoom(false)
 
     //Part9
-    lineChart.description.text = "Days"
+    lineChart.description.text = "Tage"
     lineChart.setNoDataText("No forex yet!")
 
     //Part10
