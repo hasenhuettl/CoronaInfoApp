@@ -9,7 +9,7 @@
     <string name="langTag">tr</string>
     <string name="noConnection">Konnte keine Verbindung mit dem Server herstellen. Bitte überprüfen Sie ihre Internetverbindung</string>
     <string name="beschraenkungenText">30.12: \n✱ Kultur: Museen, Bibliotheken, Büchereien und Archive werden geschlossen. \n✱ Freizeit: Tierparks, Zoos und botanische Gärten bleiben geschlossen. ></string>
-    <string-array name="city_list">
+    <string-array name="spinner_numbers">
         <item>30</item>
         <item>50</item>
         <item>90</item>

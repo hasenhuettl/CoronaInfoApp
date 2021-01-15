@@ -39,7 +39,7 @@
         android:layout_margin="10dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="32dp"
-        android:entries="@array/city_list"
+        android:entries="@array/spinner_numbers"
         android:gravity="left"
         app:layout_constraintBottom_toBottomOf="@+id/epikurve_tage"
         app:layout_constraintEnd_toStartOf="@+id/epikurve_button"
