@@ -2,6 +2,7 @@ package fhj.ima.com.example.coronainfoapp
 
 import android.app.Activity
 import android.app.DownloadManager
+import android.app.Instrumentation
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -67,6 +68,8 @@ class AktuelleZahlen : AppCompatActivity() {
         // Apply the adapter to the spinner
         spinner.adapter = adapter
 
+
+     
     }
 
 
