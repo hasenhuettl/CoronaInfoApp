@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">CoronaInfoApp</string>
     <string name="mainGesundentelefon">Gesundheitsnummer</string>
+    <string name="main">Hauptseite</string>
     <string name="mainZahlen">aktuelle Zahlen</string>
     <string name="mainBeschraenkungen">aktuelle Beschränkungen</string>
     <string name="mainAmpelfarben">Erklärung der Ampelfarben</string>
+    <string name="mainIC">Hauptseite</string>
+    <string name="mainZahlenIC">Epikurve</string>
+    <string name="mainBeschraenkungenIC">Beschränkungen</string>
+    <string name="mainAmpelfarbenIC">Ampelfarben</string>
     <string name="beschraenkungen">Beschränkungen:</string>
     <string name="action_favorite">action</string>
     <string name="langTag">tr</string>

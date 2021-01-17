@@ -1,5 +1,6 @@
 package fhj.ima.com.example.coronainfoapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -11,7 +12,11 @@ import android.util.Log
 import android.view.MenuItem
 import android.webkit.WebView
 import android.widget.SearchView
+import at.fh.swengb.coronainfoapp.Ampelfarben
+import at.fh.swengb.coronainfoapp.MainActivity
+import kotlinx.android.synthetic.main.activity_ampelfarben.*
 import kotlinx.android.synthetic.main.activity_beschraenkungen.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class Beschraenkungen : AppCompatActivity() {
@@ -21,9 +26,6 @@ class Beschraenkungen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_beschraenkungen)
 
-        Log.i("beschraenkungen", "1")
-
-        //loadHtml()
 
         val WebView = findViewById<WebView>(R.id.beschraenkungenHtml)
         WebView.loadUrl("https://www.sozialministerium.at/Informationen-zum-Coronavirus/Coronavirus---Aktuelle-Ma%C3%9Fnahmen.html")
@@ -33,51 +35,20 @@ class Beschraenkungen : AppCompatActivity() {
             WebView.findAll(beschraenkungenSearchView.getQuery().toString())
         }
 
-        Log.i("beschraenkungen", "2")
+        beschraenkungen_bottom_navigation?.selectedItemId = R.id.bottom_navigation_item_beschraenkungen
+
+        beschraenkungen_bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.bottom_navigation_item_main -> {val intent = Intent(this, MainActivity::class.java); startActivity(intent) }
+                R.id.bottom_navigation_item_zahlen -> { val intent = Intent(this, AktuelleZahlen::class.java); startActivity(intent) }
+                // R.id.bottom_navigation_item_beschraenkungen -> { val intent = Intent(this, Beschraenkungen::class.java); startActivity(intent) }
+                R.id.bottom_navigation_item_ampelfarben -> { val intent = Intent(this, Ampelfarben::class.java); startActivity(intent) }
+                else -> print("hi")
+            }
+            true
+        }
 
     }
-
-    /*private fun loadHtml(){
-        val url = "https://www.sozialministerium.at/Informationen-zum-Coronavirus/Coronavirus---Aktuelle-Ma%C3%9Fnahmen.html";
-        val textView = findViewById<TextView>(R.id.beschraenkungenHtml)
-        val okClient by lazy { OkHttpClient() }
-        val okRequest by lazy {
-            Request.Builder()
-                    .url(url)
-                    .build();
-        }
-
-        okClient.newCall(okRequest).enqueue(object:Callback{
-            override fun onFailure(call: Call?, e: IOException?) {
-                e?.printStackTrace()
-            }
-
-            override fun onResponse(call: Call?, response: Response?) {
-                val input = response?.body()?.string() ?:""
-                runOnUiThread{
-                    textView.beschraenkungenHtml.text = input
-                }
-            }
-        })
-    }*/
-    /*override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_favorite -> {
-            // User chose the "Settings" item, show the app settings UI...
-            true
-        }
-
-        R.id.action_favorite -> {
-            // User chose the "Favorite" action, mark the current item
-            // as a favorite...
-            true
-        }
-
-        else -> {
-            // If we got here, the user's action was not recognized.
-            // Invoke the superclass to handle it.
-            super.onOptionsItemSelected(item)
-        }
-    }*/
 
 
 

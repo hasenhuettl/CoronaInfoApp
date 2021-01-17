@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_navigation_item_main"
+        android:icon="@drawable/ic_home"
+        android:title="@string/main" />
+
+    <item
+        android:id="@+id/bottom_navigation_item_zahlen"
+        android:icon="@drawable/ic_action_name"
+        android:title="@string/mainZahlenIC" />
+
+    <item
+        android:id="@+id/bottom_navigation_item_beschraenkungen"
+        android:icon="@drawable/ic_careful"
+        android:title="@string/mainBeschraenkungenIC" />
+
+    <item
+        android:id="@+id/bottom_navigation_item_ampelfarben"
+        android:icon="@drawable/ic_baseline_traffic_24"
+        android:title="@string/mainAmpelfarbenIC" />
+
+</menu>
