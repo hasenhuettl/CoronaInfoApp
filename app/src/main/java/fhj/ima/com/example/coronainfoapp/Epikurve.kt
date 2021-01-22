@@ -67,7 +67,6 @@ class AktuelleZahlen : AppCompatActivity() {
         }
 
         epikurven_bottom_navigation?.selectedItemId = R.id.bottom_navigation_item_zahlen
-
         epikurven_bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.bottom_navigation_item_main -> {val intent = Intent(this, MainActivity::class.java); startActivity(intent) }
