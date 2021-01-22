@@ -15,13 +15,13 @@ import java.io.IOException
 import java.lang.Exception
 import java.util.*
 
-class EpikurveAdapter: RecyclerView.Adapter<EpikurveViewHolder>() {
-    private var epikurveList = listOf<epikurve>()
+class EpikurveAdapter (val clickListener: (epikurve: epikurve) -> Unit): RecyclerView.Adapter<EpikurveViewHolder>() {
+    public var epikurveList = listOf<epikurve>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpikurveViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val epikurveItemView = inflater.inflate(R.layout.item_zahlen, parent, false)
-        return EpikurveViewHolder(epikurveItemView)
+        return EpikurveViewHolder(epikurveItemView, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -39,16 +39,18 @@ class EpikurveAdapter: RecyclerView.Adapter<EpikurveViewHolder>() {
     }
 
     fun getNewValue(position: Int): Int{
-        return if (epikurveList[position].Fälle_Zuwachs != "N")
+        if (epikurveList.size == 0)
+            return 0
+        else if (epikurveList[position].Fälle_Zuwachs != "N")
             return epikurveList[position].Fälle_Zuwachs.toInt()
         else if (position == (epikurveList.size - 1))
             return epikurveList[position].Fälle_gesamt
         else
-            return (epikurveList[position - 1].Fälle_gesamt - epikurveList[position].Fälle_gesamt)
+            return epikurveList[position].Fälle_gesamt - epikurveList[position + 1].Fälle_gesamt
     }
 }
 
-class EpikurveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class EpikurveViewHolder(itemView: View, val clickListener: (lesson: epikurve) -> Unit): RecyclerView.ViewHolder(itemView) {
     fun bindItem(epikurve: epikurve) {
 
         // Datum - java.time.* wird nicht von API level 21 unterstützt, deswegen ThreeTenABP import
@@ -78,6 +80,11 @@ class EpikurveViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         }
         else {
             itemView.zahlen_neue_Fälle.text = "keine Angabe"
+        }
+
+        itemView.setOnClickListener {
+
+            clickListener(epikurve)
         }
     }
 }

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_ampelfarben.*
 
 class Ampelfarben : AppCompatActivity() {
 
-    val AmpelfarbenAdapter = fhj.ima.com.example.coronainfoapp.AmpelfarbenAdapter()
+    val AmpelfarbenAdapter = fhj.ima.com.example.coronainfoapp.AmpelfarbenAdapter(){}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

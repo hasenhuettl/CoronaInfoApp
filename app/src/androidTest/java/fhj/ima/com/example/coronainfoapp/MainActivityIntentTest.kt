@@ -1,6 +1,7 @@
 package fhj.ima.com.example.coronainfoapp
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.intent.Intents
@@ -13,11 +14,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import at.fh.swengb.coronainfoapp.Ampelfarben
 import at.fh.swengb.coronainfoapp.MainActivity
 import at.fh.swengb.coronainfoapp.R
+import kotlinx.android.synthetic.main.activity_main.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.security.AccessController.getContext
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityIntentTest {
@@ -56,21 +59,22 @@ class MainActivityIntentTest {
         onView(withId(R.id.call_button)).perform(click())
         intended(hasAction(Intent.ACTION_DIAL))
     }
+
     @Test
     fun clickingAmpelfarbenBottomNavigation_shouldLaunchAmpelfarbenActivity() {
-        onView(withId(R.id.bottom_navigation_item_ampelfarben )).perform(click())
+        onView(withId(R.id.bottom_navigation_item_ampelfarben)).perform(click())
         intended(hasComponent(Ampelfarben::class.java.name))
     }
 
     @Test
     fun clickingBeschraenkungenBottomNavigation_shouldLaunchBeschraenkungenActivity() {
-        onView(withId(R.id.bottom_navigation_item_beschraenkungen )).perform(click())
+        onView(withId(R.id.bottom_navigation_item_beschraenkungen)).perform(click())
         intended(hasComponent(Beschraenkungen::class.java.name))
     }
 
     @Test
     fun clickinZahlenBottomNavigation_shouldLaunchAktuelleZahlenActivity() {
-        onView(withId(R.id.bottom_navigation_item_zahlen )).perform(click())
+        onView(withId(R.id.bottom_navigation_item_zahlen)).perform(click())
         intended(hasComponent(AktuelleZahlen::class.java.name))
     }
 

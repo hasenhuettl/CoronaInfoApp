@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import at.fh.swengb.coronainfoapp.R
 import kotlinx.android.synthetic.main.item_ampelstufen.view.*
 
-class AmpelfarbenAdapter: RecyclerView.Adapter<AmpelViewHolder>() {
-    private var ampelfarbenList = listOf<ampelfarben>()
+class AmpelfarbenAdapter(val clickListener: (ampelfarbe: ampelfarben) -> Unit): RecyclerView.Adapter<AmpelViewHolder>() {
+    var ampelfarbenList = listOf<ampelfarben>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AmpelViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val ampelItemView = inflater.inflate(R.layout.item_ampelstufen, parent, false)
-        return AmpelViewHolder(ampelItemView)
+        return AmpelViewHolder(ampelItemView, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -32,11 +32,14 @@ class AmpelfarbenAdapter: RecyclerView.Adapter<AmpelViewHolder>() {
     }
 }
 
-    class AmpelViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class AmpelViewHolder(itemView: View, val clickListener: (lesson: ampelfarben) -> Unit): RecyclerView.ViewHolder(itemView) {
     fun bindItem(ampelfarbe: ampelfarben) {
         itemView.ampelstufe.text = ampelfarbe.stufe
         itemView.beschränkungen.text = ampelfarbe.beschränkungen.joinToString( separator = "\n")
         itemView.MaterialCardView.setBackgroundColor(Color.parseColor(ampelfarbe.color))
+        itemView.setOnClickListener {
 
+            clickListener(ampelfarbe)
+        }
     }
 }

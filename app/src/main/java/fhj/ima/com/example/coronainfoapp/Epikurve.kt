@@ -13,37 +13,43 @@ import at.fh.swengb.coronainfoapp.Ampelfarben
 import at.fh.swengb.coronainfoapp.MainActivity
 import at.fh.swengb.coronainfoapp.R
 import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.AxisBase
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.squareup.moshi.Moshi
 import kotlinx.android.synthetic.main.activity_ampelfarben.*
 import kotlinx.android.synthetic.main.activity_beschraenkungen.*
 import kotlinx.android.synthetic.main.activity_epikurve.*
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
+import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class AktuelleZahlen : AppCompatActivity() {
-    val epikurvenAdapter = EpikurveAdapter()
+    val epikurvenAdapter = EpikurveAdapter(){ }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_epikurve)
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences("LocalPersistence", Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+            "LocalPersistence",
+            Context.MODE_PRIVATE
+        )
 
         EpikurveRepository.epikurveList(
-                success = {
-                    epikurvenAdapter.updateListEpikurve(it)
-                },
-                error = {
-                    Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-                }
+            success = {
+                epikurvenAdapter.updateListEpikurve(it)
+            },
+            error = {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
         )
         //parseJson()
 
@@ -52,7 +58,11 @@ class AktuelleZahlen : AppCompatActivity() {
 
 
         // Create an ArrayAdapter
-        val adapter = ArrayAdapter.createFromResource(this, R.array.spinner_numbers, android.R.layout.simple_spinner_item)
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.spinner_numbers,
+            android.R.layout.simple_spinner_item
+        )
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         // Apply the adapter to the spinner
@@ -63,16 +73,35 @@ class AktuelleZahlen : AppCompatActivity() {
 
         epikurve_button.setOnClickListener{
             diagram()
-            sharedPreferences.edit().putInt("MY_KEY_FOR_SPINNERSELECTION", adapter.getPosition(spinner.selectedItem.toString())).apply()
+            sharedPreferences.edit().putInt(
+                "MY_KEY_FOR_SPINNERSELECTION", adapter.getPosition(
+                    spinner.selectedItem.toString()
+                )
+            ).apply()
         }
 
         epikurven_bottom_navigation?.selectedItemId = R.id.bottom_navigation_item_zahlen
         epikurven_bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
-                R.id.bottom_navigation_item_main -> {val intent = Intent(this, MainActivity::class.java); startActivity(intent) }
+                R.id.bottom_navigation_item_main -> {
+                    val intent = Intent(
+                        this,
+                        MainActivity::class.java
+                    ); startActivity(intent)
+                }
                 // R.id.bottom_navigation_item_zahlen -> { val intent = Intent(this, AktuelleZahlen::class.java); startActivity(intent) }
-                R.id.bottom_navigation_item_beschraenkungen -> { val intent = Intent(this, Beschraenkungen::class.java); startActivity(intent) }
-                R.id.bottom_navigation_item_ampelfarben -> { val intent = Intent(this, Ampelfarben::class.java); startActivity(intent) }
+                R.id.bottom_navigation_item_beschraenkungen -> {
+                    val intent = Intent(
+                        this,
+                        Beschraenkungen::class.java
+                    ); startActivity(intent)
+                }
+                R.id.bottom_navigation_item_ampelfarben -> {
+                    val intent = Intent(
+                        this,
+                        Ampelfarben::class.java
+                    ); startActivity(intent)
+                }
                 else -> print("hi")
             }
             true
@@ -103,6 +132,8 @@ fun diagram(){
         y++
     }
 
+
+
     //Part3
     val vl = LineDataSet(entries, "Anzahl der Fälle")
 
@@ -111,11 +142,10 @@ fun diagram(){
     theme.resolveAttribute(R.attr.colorOnPrimary, typedValue, true)
     val mycolor = typedValue.data
 
-
     vl.setDrawValues(false)
     vl.setDrawFilled(true)
     vl.lineWidth = 3f
-//    vl.fillColor = R.color.light_teal
+    vl.fillColor = mycolor
     vl.fillAlpha = mycolor
     lineChart.axisLeft.textColor = mycolor
     lineChart.axisRight.textColor = mycolor
@@ -123,7 +153,7 @@ fun diagram(){
     lineChart.legend.textColor = mycolor
     lineChart.description.textColor = mycolor
 
-    //Part5
+        //Part5
     lineChart.xAxis.labelRotationAngle = 0f
 
     //Part6
@@ -132,6 +162,7 @@ fun diagram(){
     //Part7
     //lineChart.axisRight.isEnabled = false
     //lineChart.xAxis.axisMaximum = j+0.1f
+    val xAxis: XAxis = lineChart.xAxis
     val yAxis: YAxis = lineChart.axisLeft
     yAxis.setAxisMinimum(0f);
 
@@ -155,14 +186,26 @@ fun diagram(){
 private fun parseJson(){
     val moshi = Moshi.Builder().build()
     val jsonAdapter = moshi.adapter<epikurve>(epikurve::class.java)
-    val result = jsonAdapter.fromJson("""
+    val result = jsonAdapter.fromJson(
+        """
             {"Datum": "2021-01-03",
         "Fälle_gesamt": 366525,
             "Fälle_Zuwachs": "10"
             }
-        """.trimIndent())
+        """.trimIndent()
+    )
     }
 
+}
+
+class MyValueFormatter : ValueFormatter() {
+    private val format = DecimalFormat("###,##0.0")
+
+    // override this for custom formatting of XAxis or YAxis labels
+    override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+        return format.format(value)
+    }
+    // ... override other methods for the other chart types
 }
 
 
