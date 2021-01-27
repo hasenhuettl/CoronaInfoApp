@@ -8,19 +8,19 @@ import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.recyclerview.widget.RecyclerView
 import at.fh.swengb.coronainfoapp.R
 import kotlinx.android.synthetic.main.item_zahlen.view.*
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.format.FormatStyle
 import java.io.IOException
 import java.lang.Exception
+import java.text.SimpleDateFormat
 import java.util.*
 
 class EpikurveAdapter (val clickListener: (epikurve: epikurve) -> Unit): RecyclerView.Adapter<EpikurveViewHolder>() {
     public var epikurveList = listOf<epikurve>()
+    public val dateFormat = SimpleDateFormat("yyyy-MM-dd")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpikurveViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val epikurveItemView = inflater.inflate(R.layout.item_zahlen, parent, false)
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+1"))
         return EpikurveViewHolder(epikurveItemView, clickListener)
     }
 
@@ -48,27 +48,43 @@ class EpikurveAdapter (val clickListener: (epikurve: epikurve) -> Unit): Recycle
         else
             return epikurveList[position].Fälle_gesamt - epikurveList[position + 1].Fälle_gesamt
     }
+
+    fun getDateAsFloat (position: Int): Float {
+        val tmp1 = dateFormat.parse(epikurveList[position].Datum)
+        val tmp2 = tmp1.time
+        val tmp3 = tmp2.toFloat()
+        return tmp3
+    }
 }
 
 class EpikurveViewHolder(itemView: View, val clickListener: (lesson: epikurve) -> Unit): RecyclerView.ViewHolder(itemView) {
     fun bindItem(epikurve: epikurve) {
 
         // Datum - java.time.* wird nicht von API level 21 unterstützt, deswegen ThreeTenABP import
-        try {
-            val language: String = "tr"
-            val localDateTime = LocalDateTime.parse(epikurve.Datum+"T09:55:00")
-            val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
-                    .withLocale(Locale.forLanguageTag(language))
-            val output: String? = formatter.format(localDateTime)
-            itemView.Datum.text = output?.take(10) ?: throw IOException("konnte Datum nicht konvertieren!")
-        }
-        catch (e: IOException ) {
-            itemView.Datum.text = "konnte Datum nicht konvertieren!"
-        }
-        catch (e: Exception){
-            itemView.Datum.text = "etwas lief schief"
-        }
+//        try {
+//            val language: String = "tr"
+//            val localDateTime = LocalDateTime.parse(epikurve.Datum+"T09:55:00")
+//            val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
+//                    .withLocale(Locale.forLanguageTag(language))
+//            val output: String? = formatter.format(localDateTime)
+//            itemView.Datum.text = output?.take(10) ?: throw IOException("konnte Datum nicht konvertieren!")
+//        }
+//        catch (e: IOException ) {
+//            itemView.Datum.text = "konnte Datum nicht konvertieren!"
+//        }
+//        catch (e: Exception){
+//            itemView.Datum.text = "etwas lief schief"
+//        }
 
+        val df = SimpleDateFormat("yyyy-MM-dd")
+        var date = df.parse(epikurve.Datum)
+        val format = SimpleDateFormat("dd.MM.yyyy")
+        if(date != null){
+            itemView.Datum.text = format.format(date)
+        }
+        else{
+            itemView.Datum.text = "Invalid Date"
+        }
 
         // alle Fälle
         itemView.zahlen_gesamt_Fälle.text = epikurve.Fälle_gesamt.toString()
