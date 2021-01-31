@@ -1,7 +1,5 @@
 import com.google.common.truth.Truth.assertThat
-import fhj.ima.com.example.coronainfoapp.EpikurveAdapter
-import fhj.ima.com.example.coronainfoapp.EpikurveViewHolder
-import fhj.ima.com.example.coronainfoapp.epikurve
+import fhj.ima.com.example.coronainfoapp.*
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -82,5 +80,40 @@ class EpikurveAdapterUnitTest {
         assertThat(adapter.getNewValue(2)).isEqualTo(100)
         assertThat(adapter.getNewValue(0)).isEqualTo(200)
 
+    }
+
+    @Test
+    fun getDateAsFloat_isCorrect() {
+        val adapter = EpikurveAdapter({ print(it)})
+        adapter.epikurveList = epikurven
+        assertThat(adapter.getDateAsFloat(0)).isEqualTo(1.60980114E12f)
+        assertThat(adapter.getDateAsFloat(1)).isEqualTo(1.60971476E12f)
+    }
+
+    @Test
+    fun updateList_isCorrect() {
+        // make sure that updateList(...) works as expected
+        val adapter = EpikurveAdapter { print(it) }
+        adapter.epikurveList = epikurven
+        val mockHolder = Mockito.mock(EpikurveViewHolder::class.java)
+        adapter.onBindViewHolder(mockHolder, 3)
+        verify(mockHolder,times(1)).bindItem(epikurven[3])
+
+
+        try {
+            val epikurveUpdated = (1..20).map{
+                epikurve(
+                    "2021-01-05",
+                    72000,
+                    "N"
+                )
+            }
+            adapter.updateListEpikurve(epikurveUpdated)
+        }
+        catch (e : NullPointerException)
+        {
+            Assert.assertEquals(e.message, null)
+        }
+        Assert.assertEquals(20, adapter.itemCount)
     }
 }

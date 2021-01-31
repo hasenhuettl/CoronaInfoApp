@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="at.fh.swengb.coronainfoapp">
+    package="fhj.ima.com.example.coronainfoapp">
+
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -15,20 +16,20 @@
 
         <activity
             android:name="fhj.ima.com.example.coronainfoapp.Beschraenkungen"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="fhj.ima.com.example.coronainfoapp.MainActivity">
         </activity>
 
         <activity
             android:name="fhj.ima.com.example.coronainfoapp.AktuelleZahlen"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="fhj.ima.com.example.coronainfoapp.MainActivity">
         </activity>
 
         <activity
-            android:name=".Ampelfarben"
-            android:parentActivityName=".MainActivity">
+            android:name="fhj.ima.com.example.coronainfoapp.Ampelfarben"
+            android:parentActivityName="fhj.ima.com.example.coronainfoapp.MainActivity">
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="fhj.ima.com.example.coronainfoapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

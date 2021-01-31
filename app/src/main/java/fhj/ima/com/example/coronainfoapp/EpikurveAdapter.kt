@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.core.content.res.TypedArrayUtils.getString
 import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.recyclerview.widget.RecyclerView
-import at.fh.swengb.coronainfoapp.R
 import kotlinx.android.synthetic.main.item_zahlen.view.*
 import java.io.IOException
 import java.lang.Exception
@@ -59,23 +58,6 @@ class EpikurveAdapter (val clickListener: (epikurve: epikurve) -> Unit): Recycle
 
 class EpikurveViewHolder(itemView: View, val clickListener: (lesson: epikurve) -> Unit): RecyclerView.ViewHolder(itemView) {
     fun bindItem(epikurve: epikurve) {
-
-        // Datum - java.time.* wird nicht von API level 21 unterstützt, deswegen ThreeTenABP import
-//        try {
-//            val language: String = "tr"
-//            val localDateTime = LocalDateTime.parse(epikurve.Datum+"T09:55:00")
-//            val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
-//                    .withLocale(Locale.forLanguageTag(language))
-//            val output: String? = formatter.format(localDateTime)
-//            itemView.Datum.text = output?.take(10) ?: throw IOException("konnte Datum nicht konvertieren!")
-//        }
-//        catch (e: IOException ) {
-//            itemView.Datum.text = "konnte Datum nicht konvertieren!"
-//        }
-//        catch (e: Exception){
-//            itemView.Datum.text = "etwas lief schief"
-//        }
-
         val df = SimpleDateFormat("yyyy-MM-dd")
         var date = df.parse(epikurve.Datum)
         val format = SimpleDateFormat("dd.MM.yyyy")

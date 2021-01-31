@@ -1,4 +1,4 @@
-package at.fh.swengb.coronainfoapp
+package fhj.ima.com.example.coronainfoapp
 
 import android.content.Context
 import android.content.Intent
@@ -7,9 +7,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import fhj.ima.com.example.coronainfoapp.Beschraenkungen
-import fhj.ima.com.example.coronainfoapp.AktuelleZahlen
-import kotlinx.android.synthetic.main.activity_epikurve.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -44,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         open_erklärung.setOnClickListener {
-            val intent = Intent(this, Ampelfarben::class.java)
+            val intent = Intent(this, AmpelfarbenActivity::class.java)
             startActivity(intent)
         }
 
@@ -66,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 // R.id.bottom_navigation_item_main -> {val intent = Intent(this, MainActivity::class.java); startActivity(intent) }
                 R.id.bottom_navigation_item_zahlen -> { val intent = Intent(this, AktuelleZahlen::class.java); startActivity(intent) }
                 R.id.bottom_navigation_item_beschraenkungen -> { val intent = Intent(this, Beschraenkungen::class.java); startActivity(intent) }
-                R.id.bottom_navigation_item_ampelfarben -> { val intent = Intent(this, Ampelfarben::class.java); startActivity(intent) }
+                R.id.bottom_navigation_item_ampelfarben -> { val intent = Intent(this, AmpelfarbenActivity::class.java); startActivity(intent) }
                 else -> print("hi")
             }
             true

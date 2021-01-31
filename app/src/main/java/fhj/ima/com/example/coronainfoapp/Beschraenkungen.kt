@@ -3,20 +3,8 @@ package fhj.ima.com.example.coronainfoapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import at.fh.swengb.coronainfoapp.R
-import kotlinx.android.synthetic.main.activity_beschraenkungen.view.*
-import okhttp3.*
-import java.io.IOException
-import android.util.Log
-import android.view.MenuItem
 import android.webkit.WebView
-import android.widget.SearchView
-import at.fh.swengb.coronainfoapp.Ampelfarben
-import at.fh.swengb.coronainfoapp.MainActivity
-import kotlinx.android.synthetic.main.activity_ampelfarben.*
 import kotlinx.android.synthetic.main.activity_beschraenkungen.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class Beschraenkungen : AppCompatActivity() {
@@ -42,7 +30,7 @@ class Beschraenkungen : AppCompatActivity() {
                 R.id.bottom_navigation_item_main -> {val intent = Intent(this, MainActivity::class.java); startActivity(intent) }
                 R.id.bottom_navigation_item_zahlen -> { val intent = Intent(this, AktuelleZahlen::class.java); startActivity(intent) }
                 // R.id.bottom_navigation_item_beschraenkungen -> { val intent = Intent(this, Beschraenkungen::class.java); startActivity(intent) }
-                R.id.bottom_navigation_item_ampelfarben -> { val intent = Intent(this, Ampelfarben::class.java); startActivity(intent) }
+                R.id.bottom_navigation_item_ampelfarben -> { val intent = Intent(this, AmpelfarbenActivity::class.java); startActivity(intent) }
                 else -> print("hi")
             }
             true

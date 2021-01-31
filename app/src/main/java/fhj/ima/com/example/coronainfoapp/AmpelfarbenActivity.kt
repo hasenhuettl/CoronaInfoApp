@@ -1,18 +1,14 @@
-package at.fh.swengb.coronainfoapp
+package fhj.ima.com.example.coronainfoapp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import fhj.ima.com.example.coronainfoapp.AktuelleZahlen
-import fhj.ima.com.example.coronainfoapp.AmpelRepository
-import fhj.ima.com.example.coronainfoapp.Beschraenkungen
 import kotlinx.android.synthetic.main.activity_ampelfarben.*
 
-class Ampelfarben : AppCompatActivity() {
+class AmpelfarbenActivity : AppCompatActivity() {
 
-    val AmpelfarbenAdapter = fhj.ima.com.example.coronainfoapp.AmpelfarbenAdapter(){}
+    val AmpelfarbenAdapter = AmpelfarbenAdapter(){}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

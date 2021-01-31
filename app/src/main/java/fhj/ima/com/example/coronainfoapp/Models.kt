@@ -3,9 +3,9 @@ package fhj.ima.com.example.coronainfoapp
 import com.squareup.moshi.JsonClass
 
 class ampelfarben (
-    val stufe: String,
-    val beschränkungen: List<String>,
-    val color: String
+    var stufe: String,
+    var beschränkungen: List<String>,
+    var color: String
 )
 
 @JsonClass(generateAdapter = true)

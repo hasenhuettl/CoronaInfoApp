@@ -4,24 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import at.fh.swengb.coronainfoapp.Ampelfarben
-import at.fh.swengb.coronainfoapp.MainActivity
-import at.fh.swengb.coronainfoapp.R
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.squareup.moshi.Moshi
 import kotlinx.android.synthetic.main.activity_epikurve.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -102,7 +96,7 @@ class AktuelleZahlen : AppCompatActivity() {
                 R.id.bottom_navigation_item_ampelfarben -> {
                     val intent = Intent(
                         this,
-                        Ampelfarben::class.java
+                        AmpelfarbenActivity::class.java
                     ); startActivity(intent)
                 }
                 else -> print("hi")
@@ -113,14 +107,6 @@ class AktuelleZahlen : AppCompatActivity() {
 
     }
 
-
-    class XAxisDateFormatter : ValueFormatter() {
-        override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-            val date = Date(value.roundToLong())
-            val format = SimpleDateFormat("dd.MM.yyyy")
-            return format.format(date)
-        }
-    }
 
     fun diagram() {
         //Part1
@@ -207,6 +193,14 @@ class AktuelleZahlen : AppCompatActivity() {
 //    )
     }
 
+}
+
+class XAxisDateFormatter : ValueFormatter() {
+    override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+        val date = Date(value.roundToLong())
+        val format = SimpleDateFormat("dd.MM.yyyy")
+        return format.format(date)
+    }
 }
 
 //class MyValueFormatter : ValueFormatter() {
