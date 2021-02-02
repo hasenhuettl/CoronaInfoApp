@@ -88,19 +88,4 @@
         app:layout_constraintStart_toEndOf="@+id/main_switch_darkmode"
         app:layout_constraintTop_toTopOf="@+id/main_switch_darkmode" />
 
-    <Button
-        android:id="@+id/main_deutsch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deutsch"
-        app:layout_constraintBottom_toTopOf="@+id/main_english"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/main_english"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="English"
-        app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

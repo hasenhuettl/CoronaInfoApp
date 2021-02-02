@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/german"
+        android:enabled="true"
+        android:icon="@drawable/ic_flag_of_germany"
+        android:title="german"
+        android:visible="true"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/english"
+        android:enabled="true"
+        android:icon="@drawable/ic_flag_of_the_united_kingdom"
+        android:title="english"
+        android:visible="true"
+        app:showAsAction="always"/>
+</menu>

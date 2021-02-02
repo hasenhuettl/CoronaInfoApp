@@ -9,11 +9,26 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
+fun updateResources(context: Context, language: String) {
+    val locale = Locale(language)
+    Locale.setDefault(locale)
+    val res = context.resources
+    val config = Configuration(res.configuration)
+    if (Build.VERSION.SDK_INT >= 17) {
+        config.setLocale(locale)
+    } else {
+        config.locale = locale
+    }
+    res.updateConfiguration(config, res.displayMetrics)
+}
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,33 +81,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-        fun updateResources(context: Context, language: String) {
-            val locale = Locale(language)
-            Locale.setDefault(locale)
-            val res = context.resources
-            val config = Configuration(res.configuration)
-            if (Build.VERSION.SDK_INT >= 17) {
-                config.setLocale(locale)
-            } else {
-                config.locale = locale
-            }
-            res.updateConfiguration(config, res.displayMetrics)
-        }
-
-
-        main_deutsch.setOnClickListener{
-            updateResources(this, "de")
-            finish()
-            startActivity(intent)
-        }
-
-        main_english.setOnClickListener{
-            updateResources(this, "en")
-            finish()
-            startActivity(intent)
-        }
-
         main_bottom_navigation?.selectedItemId = R.id.bottom_navigation_item_main
 
         main_bottom_navigation.setOnNavigationItemSelectedListener { item ->
@@ -119,6 +107,30 @@ class MainActivity : AppCompatActivity() {
                 else -> print("hi")
             }
             true
+        }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.item_topview, menu)
+        return true
+    }
+
+    private inline fun consume(f: () -> Unit): Boolean {
+        f()
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.german -> consume {
+                updateResources(this, "de")
+                finish()
+                startActivity(intent)
+            }
+            R.id.english -> consume {
+                updateResources(this, "en")
+                finish()
+                startActivity(intent)
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
