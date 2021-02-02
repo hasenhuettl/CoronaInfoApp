@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_ampelstufen.view.*
 
 class AmpelfarbenAdapter(val clickListener: (ampelfarbe: ampelfarben) -> Unit): RecyclerView.Adapter<AmpelViewHolder>() {
@@ -34,6 +35,7 @@ class AmpelfarbenAdapter(val clickListener: (ampelfarbe: ampelfarben) -> Unit): 
     class AmpelViewHolder(itemView: View, val clickListener: (lesson: ampelfarben) -> Unit): RecyclerView.ViewHolder(itemView) {
     fun bindItem(ampelfarbe: ampelfarben) {
         itemView.ampelstufe.text = ampelfarbe.stufe
+
         itemView.beschränkungen.text = ampelfarbe.beschränkungen.joinToString( separator = "\n")
         itemView.MaterialCardView.setBackgroundColor(Color.parseColor(ampelfarbe.color))
         itemView.setOnClickListener {

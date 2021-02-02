@@ -15,4 +15,9 @@
     <string name="langTag">tr</string>
     <string name="noConnection">"Could not connect to the server. Please check your internet connection "</string>
     <string name="beschraenkungenText">30.12: \n✱ Culture: Museums, libraries, libraries and archives will be closed. \n✱ Leisure: Animal parks, zoos and botanical gardens remain closed. ></string>
+    <string name="tage">Displayed days:</string>
+    <string name="anzeigen">Display</string>
+    <string name="Datum">Date</string>
+    <string name="neueFaelle">new cases</string>
+    <string name="Faellegesamt">total amount of cases</string>
 </resources>

@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Anzeigen"
+        android:text="@string/anzeigen"
         app:layout_constraintBottom_toBottomOf="@+id/epikurve_tage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/epikurve_tage" />
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="Datum"
+        android:text="@string/Datum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lineChart" />
 
@@ -70,7 +70,7 @@
         android:id="@+id/epikurve_Header_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="neue Fälle"
+        android:text="@string/neueFaelle"
         app:layout_constraintBottom_toBottomOf="@+id/epikurve_Header_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="Fälle gesamt"
+        android:text="@string/Faellegesamt"
         app:layout_constraintBottom_toBottomOf="@+id/epikurve_Header_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/epikurve_Header_2" />
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Angezeigte Tage:"
+        android:text="@string/tage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

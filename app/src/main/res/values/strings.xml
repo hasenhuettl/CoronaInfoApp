@@ -12,6 +12,11 @@
     <string name="beschraenkungen">Beschränkungen:</string>
     <string name="action_favorite">action</string>
     <string name="langTag">tr</string>
+    <string name="tage">Angezeigte Tage:</string>
+    <string name="anzeigen">Anzeigen</string>
+    <string name="Datum">Datum</string>
+    <string name="neueFaelle">neue Fälle</string>
+    <string name="Faellegesamt">Fälle gesamt</string>
     <string name="noConnection">Konnte keine Verbindung mit dem Server herstellen. Bitte überprüfen Sie ihre Internetverbindung</string>
     <string name="beschraenkungenText">30.12: \n✱ Kultur: Museen, Bibliotheken, Büchereien und Archive werden geschlossen. \n✱ Freizeit: Tierparks, Zoos und botanische Gärten bleiben geschlossen. ></string>
     <string-array name="spinner_numbers">

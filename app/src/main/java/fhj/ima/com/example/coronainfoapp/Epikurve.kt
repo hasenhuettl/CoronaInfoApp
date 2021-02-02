@@ -63,7 +63,6 @@ class AktuelleZahlen : AppCompatActivity() {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
         )
-        //parseJson()
 
 
         spinner.setSelection(sharedPreferences.getInt("MY_KEY_FOR_SPINNERSELECTION", 0))
@@ -156,7 +155,7 @@ class AktuelleZahlen : AppCompatActivity() {
 
         //Part7
         lineChart.axisRight.isEnabled = false
-//    lineChart.xAxis.axisMaximum = j+0.1f
+
         // val xAxis: XAxis = lineChart.xAxis
         val yAxis: YAxis = lineChart.axisLeft
         yAxis.setAxisMinimum(0f);
@@ -180,20 +179,8 @@ class AktuelleZahlen : AppCompatActivity() {
 
     }
 
-    private fun parseJson() {
-//        val moshi = Moshi.Builder().build()
-//        val jsonAdapter = moshi.adapter<epikurve>(epikurve::class.java)
-//    val result = jsonAdapter.fromJson(
-//        """
-//            {"Datum": "2021-01-03",
-//        "Fälle_gesamt": 366525,
-//            "Fälle_Zuwachs": "10"
-//            }
-//        """.trimIndent()
-//    )
-    }
-
 }
+
 
 class XAxisDateFormatter : ValueFormatter() {
     override fun getAxisLabel(value: Float, axis: AxisBase?): String {
@@ -203,14 +190,6 @@ class XAxisDateFormatter : ValueFormatter() {
     }
 }
 
-//class MyValueFormatter : ValueFormatter() {
-//    private val format = DecimalFormat("###,##0.0")
-//
-//    // override this for custom formatting of XAxis or YAxis labels
-//    override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-//        return format.format(value)
-//    }
-//    // ... override other methods for the other chart types
-//}
+
 
 
